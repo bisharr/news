@@ -21,6 +21,20 @@ import somali from "./assets/somali.jpg";
 
 const newsData = [
   {
+    id: 11,
+    title:
+      "Somali Authorities Investigate Alleged Assault of 16-Year-Old Girl raped by a man called Ali Ahmed Ali",
+    image: somali,
+    excerpt:
+      "Authorities in Somalia are investigating an alleged sexual assault involving a 16-year-old girl, sparking calls for justice and stronger legal protections.",
+    content:
+      "Local police in Somalia have launched an investigation into an alleged sexual assault involving a 16-year-old girl. According to initial reports, the incident occurred in a residential area, prompting widespread concern among residents and human rights activists. Authorities have confirmed that they are gathering evidence and speaking with witnesses to ensure a thorough investigation. \n\n" +
+      "Community leaders and advocacy groups have condemned the incident, emphasizing the urgent need for stronger protections for young girls and harsher penalties for offenders. Human rights organizations are calling for more education on gender-based violence and urging the government to take concrete steps toward legal reform. \n\n" +
+      "also you can visit his profile facebook https://www.facebook.com/cali.a.cali.7 Meanwhile, local law enforcement officials have reassured the public that they are treating the case with urgency. 'We are committed to ensuring justice is served, and we encourage anyone with information to come forward and cooperate with the investigation,' a police spokesperson stated. \n\n" +
+      "The incident has reignited discussions on the need for stronger policies to combat sexual violence in Somalia. Advocates are urging lawmakers to implement better support systems for survivors, including counseling services, legal assistance, and safe spaces. The investigation remains ongoing, and authorities are expected to provide updates as more details emerge.",
+    date: "March 5, 2025",
+  },
+  {
     id: 1,
     title: "AI is Transforming the Future of Work",
     image: ai,
@@ -117,19 +131,6 @@ const newsData = [
       "Telecommunication companies are rapidly deploying 5G networks worldwide, enabling faster internet speeds and reduced latency. This expansion is expected to enhance remote work, smart cities, and the Internet of Things (IoT), paving the way for a more connected world.",
     date: "February 22, 2025",
   },
-  {
-    id: 11,
-    title: "Somali Authorities Investigate Alleged Assault of 16-Year-Old Girl",
-    image: somali, // Replace with actual image reference
-    excerpt:
-      "Authorities in Somalia are investigating an alleged sexual assault involving a 16-year-old girl, sparking calls for justice and stronger legal protections.",
-    content:
-      "Local police in Somalia have launched an investigation into an alleged sexual assault involving a 16-year-old girl. According to initial reports, the incident occurred in a residential area, prompting widespread concern among residents and human rights activists. Authorities have confirmed that they are gathering evidence and speaking with witnesses to ensure a thorough investigation. \n\n" +
-      "Community leaders and advocacy groups have condemned the incident, emphasizing the urgent need for stronger protections for young girls and harsher penalties for offenders. Human rights organizations are calling for more education on gender-based violence and urging the government to take concrete steps toward legal reform. \n\n" +
-      "also you can visit his profile facebook https://www.facebook.com/cali.a.cali.7 Meanwhile, local law enforcement officials have reassured the public that they are treating the case with urgency. 'We are committed to ensuring justice is served, and we encourage anyone with information to come forward and cooperate with the investigation,' a police spokesperson stated. \n\n" +
-      "The incident has reignited discussions on the need for stronger policies to combat sexual violence in Somalia. Advocates are urging lawmakers to implement better support systems for survivors, including counseling services, legal assistance, and safe spaces. The investigation remains ongoing, and authorities are expected to provide updates as more details emerge.",
-    date: "March 5, 2025",
-  },
 ];
 
 function Navbar() {
@@ -168,12 +169,14 @@ function Home() {
   return (
     <div className="min-h-screen bg-gray-100 p-10">
       <h1 className="text-4xl font-bold text-center mb-6">Latest News</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {news.map((post) => (
+      <div className="grid grid-cols-3 lg:grid-cols-4 gap-6">
+        {news.map((post, index) => (
           <Link
             to={`/news/${post.id}`}
             key={post.id}
-            className="bg-white shadow-lg p-4 rounded-lg hover:shadow-xl transition"
+            className={`bg-white shadow-lg p-4 rounded-lg hover:shadow-xl transition ${
+              index === 0 ? "col-span-2" : ""
+            }`}
           >
             <img
               src={post.image}
@@ -224,7 +227,7 @@ function NewsDetail() {
             <img
               src={item.image}
               alt={item.title}
-              className="w-full h-20 object-cover rounded-md"
+              className="w-full h-30 object-cover rounded-md"
             />
             <h4 className="font-semibold mt-2">{item.title}</h4>
           </Link>
